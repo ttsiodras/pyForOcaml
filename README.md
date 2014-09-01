@@ -104,10 +104,10 @@ migration from Python to OCaml, but didn't build a library like this.
 I think it would have helped - it sure helps me (my mind is full of Python,
 and I have no wish to mind-cache "Yet Another Standard Library (TM)").
 
-So far, all the code is Thomas's, except for my 'py.ml'.
+So far, all the code is Thomas's, except for my `py.ml`.
 
-You are missing function foo.bar from Python's stdlib
------------------------------------------------------
+You are missing Python's foo.bar function
+-----------------------------------------
 
 No kiddin. Please send patch providing the missing functionality, and I will
 merge it in.
@@ -121,5 +121,7 @@ Contact point
 -------------
 
 Thanassis Tsiodras, Dr.-Ing.
+
 e-mail: ttsiodras@gmail.com
+
 web: http://users.softlab.ece.ntua.gr/~ttsiod/
