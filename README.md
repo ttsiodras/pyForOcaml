@@ -4,32 +4,37 @@ pyForOcaml
 Why?
 ----
 
-I've been writing Python code for almost two decades.  I therefore know the
-standard Python library really well.  Unfortunately, as helpful as [integrated
-pylint checking](http://www.pylint.org/) in my editor can be, it doesn't even come
-close to the power of type systems like that inside OCaml.
+I've been writing Python code for almost two decades - and I know the
+standard Python library really well.  Unfortunately, the correctness of my
+programs has suffered in the transition to a dynamically typed language...
+As helpful as [integrated pylint checking](http://www.pylint.org/) from
+within my editor can be, it doesn't even come close to the power of type
+systems like the one inside OCaml.
 
 In plain words: the more code you write in your Python program, the more you miss 
 the compile-time checking that is done by languages like OCaml.
-There are many errors that manifest as runtime errors under Python,
+
+Why?
+
+Because there are many errors that manifest as runtime errors under Python,
 untraceable by *pylint* or *pychecker* - and which would be caught at compile-time
-by any adequately-strong type system of a statically-typed language.
+by a statically-typed language equipped with a strong type system.
 
-I don't miss the verbosity of C++ or Java, of course - Python's syntax rocks!
-It was the reason I left C++ behind and only use it
+Don't misunderstand me - I don't miss the verbosity of C++ or Java, of course.
+Python's syntax rocks!  It was the reason I left C++ behind and only use it
 [when execution speed is paramount](http://users.softlab.ece.ntua.gr/~ttsiod/straylight.html).
-But syntax isn't everything - and with the type inference of OCaml, brevity
-levels are very similar.
+But syntax isn't everything - and with the type inference of OCaml, brevity levels
+are very similar.
 
-OK, so what did you do?
------------------------
-
-This is a repository where I will add "ports" of Python's standard library
-functions, offering a type-safe OCaml interface.
+OK, so...
+---------
 
 **TL;DR: Python's stdlib is burned into my brain - so this mini-library will
 allow me to code in OCaml using forms of "the Python standard library
 functions".**
+
+This repository will host "ports" of Python's standard library functions to
+OCaml - offering a type-safe OCaml interface to their functionality.
 
 How to use it?
 --------------
@@ -41,27 +46,27 @@ type-safe versions of the functions, is...
 
     type 'a osResult = Result of 'a | Error of string
 
-For example:
+For example, `os.abspath`...
 
-    let abspath x = ...
-    let abspath_unsafe = ...
+    let abspath x = ...  (* string -> string osResult *)
+    let abspath_unsafe = ...  (* string -> string *)
 
-The first one, returns `string osResult`, which means EITHER a string,
-or an error string describing the error that happened. The seasoned
-python developer can then pattern match on the result...
+The first form, returns `string osResult`, which means EITHER a string,
+or an error string describing the error that happened. The developer can then
+pattern match on the result...
 
     let myFolder = match Os.abspath foo
     | Result s - > s
     | Error _ -> ...
 
 ...and sleep soundly, knowing that all potential errors of this invocation
-to `os.abspath` are handled. If he desires the python-styled (i.e.
-unsafe) version, he can do so:
+to `os.abspath` are handled. If the python-styled (i.e.  unsafe) version 
+is preferred, then that too can be used...
 
     let myFolder = Os.abspath_unsafe foo
     
-...but his program will get an exception at runtime if something
-goes wrong - as is the case with Python.
+...but the program will then get an exception at runtime if something
+goes wrong (as is the case with Python).
 
 *A more likely usage scenario*
 
@@ -99,18 +104,23 @@ have a look.
 Is this based on 0install?
 --------------------------
 
-I have used large parts of Thomas Leonard's code in this. He did a
+I have used large parts of Thomas Leonard's 0install code in this. He did a
 migration from Python to OCaml, but didn't build a library like this.
 I think it would have helped - it sure helps me (my mind is full of Python,
 and I have no wish to mind-cache "Yet Another Standard Library (TM)").
 
-So far, all the code is Thomas's, except for my `py.ml`.
+So far, most of the code comes from  Thomas - except for my `py.ml`,
+providing the Python 'translations'.
 
 You are missing Python's foo.bar function
 -----------------------------------------
 
-No kiddin. Please send patch providing the missing functionality, and I will
-merge it in.
+No kiddin - I've only ported a small part of `os` and `os.path` so far.
+Still, it allows me to write scripts in OCaml that I would have written
+in Python.
+
+Please send patches providing the missing functionality, and I will
+merge them in.
 
 License
 -------
