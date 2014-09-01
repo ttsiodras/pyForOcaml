@@ -1,0 +1,4 @@
+S .
+B _build/
+FLG -rectypes
+PKG core core_sys
