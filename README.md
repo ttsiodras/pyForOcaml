@@ -55,7 +55,7 @@ python developer can then pattern match on the result...
     | Error _ -> ...
 
 ...and sleep soundly, knowing that all potential errors of this invocation
-to `os.abspath` are called and handled. If he desires the python-styled (i.e.
+to `os.abspath` are handled. If he desires the python-styled (i.e.
 unsafe) version, he can do so:
 
     let myFolder = Os.abspath_unsafe foo
