@@ -22,7 +22,7 @@ by a statically-typed language equipped with a strong type system.
 
 Don't misunderstand me - I don't miss the verbosity of C++ or Java, of course.
 Python's syntax rocks!  It was the reason I left C++ behind and only use it
-[when execution speed is paramount](http://users.softlab.ece.ntua.gr/~ttsiod/straylight.html).
+[when execution speed is paramount](https://www.thanassis.space/straylight.html).
 But syntax isn't everything - and with the type inference of OCaml, brevity levels
 are very similar.
 
@@ -134,4 +134,4 @@ Thanassis Tsiodras, Dr.-Ing.
 
 e-mail: ttsiodras@gmail.com
 
-web: http://users.softlab.ece.ntua.gr/~ttsiod/
+web: https://www.thanassis.space
